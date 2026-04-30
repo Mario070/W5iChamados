@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("W5iChamados")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ef4ef1a00d61848b4d4e76292258b551cda099e")]
 [assembly: System.Reflection.AssemblyProductAttribute("W5iChamados")]
 [assembly: System.Reflection.AssemblyTitleAttribute("W5iChamados")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

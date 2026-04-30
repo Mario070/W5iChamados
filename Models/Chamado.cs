@@ -10,11 +10,11 @@ public class Chamado
 
     public int SetorId { get; set; }
 
-    public Setor Setor { get; set; }
+    public Setor? Setor { get; set; }
 
     public int PrioridadeId { get; set; }
 
-    public Prioridade Prioridade { get; set; }
+    public Prioridade? Prioridade { get; set; }
 
     public StatusChamado Status { get; set; }
 
@@ -24,5 +24,5 @@ public class Chamado
 
     public DateTime? DataFim { get; set; }
 
-    public string Solucao { get; set; }
+    public string? Solucao { get; set; }
 }
