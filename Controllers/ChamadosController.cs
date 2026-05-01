@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using W5iChamados.Models;
 using W5iChamados.Services;
+using W5iChamados.DTOs;
 
 namespace W5iChamados.Controllers;
 
@@ -16,10 +17,18 @@ public class ChamadosController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Criar([FromBody] Chamado chamado)
+    public IActionResult Criar([FromBody] CriarChamadoDto dto)
     {
         try
         {
+            var chamado = new Chamado
+            {
+                Titulo = dto.Titulo,
+                Descricao = dto.Descricao,
+                SetorId = dto.SetorId,
+                PrioridadeId = dto.PrioridadeId
+            };
+
             var resultado = _service.Criar(chamado);
             return Ok(resultado);
         }
@@ -44,11 +53,25 @@ public class ChamadosController : ControllerBase
     }
 
     [HttpPost("{id}/finalizar")]
-    public IActionResult Finalizar(int id, [FromBody] string solucao)
+    public IActionResult Finalizar(int id, [FromBody] FinalizarChamadoDto dto)
     {
         try
         {
-            var resultado = _service.Finalizar(id, solucao);
+            var resultado = _service.Finalizar(id, dto.Solucao);
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost("{id}/cancelar")]
+    public IActionResult Cancelar(int id)
+    {
+        try
+        {
+            var resultado = _service.Cancelar(id);
             return Ok(resultado);
         }
         catch (Exception ex)
