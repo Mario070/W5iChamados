@@ -15,7 +15,6 @@ public class SetoresController : ControllerBase
         _context = context;
     }
 
-    // GET: api/setores
     [HttpGet]
     public IActionResult Get()
     {
@@ -23,7 +22,6 @@ public class SetoresController : ControllerBase
         return Ok(setores);
     }
 
-    // POST: api/setores
     [HttpPost]
     public IActionResult Post([FromBody] Setor setor)
     {

@@ -15,7 +15,6 @@ public class PrioridadesController : ControllerBase
         _context = context;
     }
 
-    // GET: api/prioridades
     [HttpGet]
     public IActionResult Get()
     {
@@ -23,7 +22,6 @@ public class PrioridadesController : ControllerBase
         return Ok(prioridades);
     }
 
-    // POST: api/prioridades
     [HttpPost]
     public IActionResult Post([FromBody] Prioridade prioridade)
     {

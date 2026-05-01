@@ -105,13 +105,10 @@ public class ChamadoService
             {
                 var tempo = c.DataFim.Value - c.DataInicio.Value;
 
-                // 🔥 cálculo correto
                 tempoHoras = tempo.TotalHours;
 
-                // 🔥 formatação bonita
                 tempoFormatado = $"{tempo.Hours}h {tempo.Minutes}m {tempo.Seconds}s";
 
-                // 🔥 regra de atraso
                 if (tempoHoras > c.Prioridade.TempoEstimadoHoras)
                     atrasado = true;
             }
@@ -124,7 +121,6 @@ public class ChamadoService
                 Prioridade = c.Prioridade.Nome,
                 Status = c.Status.ToString(),
 
-                // 👇 agora faz sentido
                 Tempo = tempoFormatado,
                 TempoHoras = tempoHoras,
 

@@ -17,7 +17,7 @@ CREATE TABLE Chamados (
     SetorId INT NOT NULL,
     PrioridadeId INT NOT NULL,
 
-    Status VARCHAR(30) NOT NULL,
+    Status INT NOT NULL,
 
     DataAbertura DATETIME NOT NULL,
     DataInicio DATETIME NULL,
