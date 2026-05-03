@@ -89,45 +89,45 @@ public class ChamadoService
         return ObterCompleto(id);
     }
 
-   public List<object> Listar()
-{
-    var chamados = _context.Chamados
-        .Include(c => c.Setor)
-        .Include(c => c.Prioridade)
-        .ToList()
-        .Select(c =>
-        {
-            double? tempoHoras = null;
-            string? tempoFormatado = null;
-            bool atrasado = false;
-
-            if (c.DataInicio != null && c.DataFim != null)
+    public List<object> Listar()
+    {
+        var chamados = _context.Chamados
+            .Include(c => c.Setor)
+            .Include(c => c.Prioridade)
+            .ToList()
+            .Select(c =>
             {
-                var tempo = c.DataFim.Value - c.DataInicio.Value;
+                double? tempoHoras = null;
+                string? tempoFormatado = null;
+                bool atrasado = false;
 
-                tempoHoras = tempo.TotalHours;
+                if (c.DataInicio != null && c.DataFim != null)
+                {
+                    var tempo = c.DataFim.Value - c.DataInicio.Value;
 
-                tempoFormatado = $"{tempo.Hours}h {tempo.Minutes}m {tempo.Seconds}s";
+                    tempoHoras = tempo.TotalHours;
 
-                if (tempoHoras > c.Prioridade.TempoEstimadoHoras)
-                    atrasado = true;
-            }
+                    tempoFormatado = $"{tempo.Hours}h {tempo.Minutes}m {tempo.Seconds}s";
 
-            return new
-            {
-                c.Id,
-                c.Titulo,
-                Setor = c.Setor.Nome,
-                Prioridade = c.Prioridade.Nome,
-                Status = c.Status.ToString(),
+                    if (tempoHoras > c.Prioridade.TempoEstimadoHoras)
+                        atrasado = true;
+                }
 
-                Tempo = tempoFormatado,
-                TempoHoras = tempoHoras,
+                return new
+                {
+                    c.Id,
+                    c.Titulo,
+                    Setor = c.Setor.Nome,
+                    Prioridade = c.Prioridade.Nome,
+                    Status = c.Status.ToString(),
 
-                Atrasado = atrasado
-            };
-        }).ToList<object>();
+                    Tempo = tempoFormatado,
+                    TempoHoras = tempoHoras,
 
-    return chamados;
-}
+                    Atrasado = atrasado
+                };
+            }).ToList<object>();
+
+        return chamados;
+    }
 }

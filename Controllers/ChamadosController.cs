@@ -71,12 +71,21 @@ public class ChamadosController : ControllerBase
     {
         try
         {
-            var resultado = _service.Cancelar(id);
-            return Ok(resultado);
+            var chamado = _service.Cancelar(id);
+
+            return Ok(new
+            {
+                mensagem = "Chamado cancelado com sucesso",
+                id = chamado.Id,
+                status = chamado.Status.ToString()
+            });
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return BadRequest(new
+            {
+                erro = ex.Message
+            });
         }
     }
 
