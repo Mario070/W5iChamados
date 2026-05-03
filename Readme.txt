@@ -13,7 +13,7 @@ Tecnologias Utilizadas
 
 Arquitetura
 
-Controllers → Camada de entrada (API)
+Controllers → Camada de entrada 
 Services    → Regras de negócio
 Models      → Entidades do sistema
 Data        → Contexto do banco 
